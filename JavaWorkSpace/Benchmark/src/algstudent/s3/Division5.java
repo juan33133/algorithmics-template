@@ -4,13 +4,13 @@ public class Division5 {
 
 	public static long rec5(double n) {
 		long cont = 0;
-		double b = 0.99;
-		if (n <= 0)
+		double b = 2;
+		if (n <= 1)
 			cont++;
 		else {
 			cont++; // O(1)
-			for (int i = 0; i < n; i++) {
-				rec5(n - b);
+			for (int i = 0; i < 4; i++) {
+				rec5(n / b);
 			}
 
 		}
@@ -19,7 +19,7 @@ public class Division5 {
 
 	public static void main(String arg[]) {
 		long t1, t2, cont = 0;
-		for (int n = 1; n <= 10000000; n *= 2) {
+		for (int n = 1000; n <= 10000000; n *= 2) {
 			t1 = System.currentTimeMillis();
 
 			cont = rec5(n);
