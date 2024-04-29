@@ -1,4 +1,6 @@
-package algstudent.s6;
+package algstudent.s7.main;
+
+import algstudent.s7.numericalSquare.NumericalSquare;
 
 public class Main {
 
@@ -6,15 +8,13 @@ public class Main {
 		int repetitions = 1;
 		
 		NumericalSquare n = new NumericalSquare();
+		n.numericalSquareBranchAndBound();
+		
 		System.out.println(n.toString());
 		double t1 = System.currentTimeMillis();
-		for(int i =0 ; i < repetitions ; i++) {
-			n= new NumericalSquare();
-			n.NumericSquareOne();
-		}
+		System.out.println(); 
 		
 		double t2 = System.currentTimeMillis(); 
-		System.out.println(n.toString());
 		System.out.println(t2 - t1);
 	}
 }
