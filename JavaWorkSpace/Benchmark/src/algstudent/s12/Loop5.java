@@ -14,8 +14,8 @@ public class Loop5 {
 	public static long loop5(int n) {
 		long cont = 0;
 		for (int i = 1; i <= n; i++)
-			for (int j = 1; j <= i; j++)
-				for (int k = 1; k <= j; k++)
+			for (int j = 1; j <= n; j++)
+				for (int k = 1; k <= n; k*=2)
 					cont++;
 		return cont;
 
