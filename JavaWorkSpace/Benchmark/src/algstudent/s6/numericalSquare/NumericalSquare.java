@@ -3,7 +3,6 @@ package algstudent.s6.numericalSquare;
 import algstudent.s6.structure.Board;
 
 public class NumericalSquare {
-	private Board square;
 	private String[][] board;
 	private boolean[][] given;
 	private boolean solved;
@@ -11,7 +10,6 @@ public class NumericalSquare {
 
 	public NumericalSquare(Board board) {
 		board.clearBoard();
-		this.square = board;
 		this.board = board.getBoard();
 		this.given = board.getGiven();
 		lastEl = this.board.length - 3;

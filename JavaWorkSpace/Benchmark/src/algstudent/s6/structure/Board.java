@@ -36,7 +36,7 @@ public class Board {
 	private static String[][] read() {
 		String[][] board = null;
 		try {
-			String fileName = "src/algstudent/s62/test/test03.txt";
+			String fileName = "src/algstudent/s6/test/test03.txt";
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
 			String line;

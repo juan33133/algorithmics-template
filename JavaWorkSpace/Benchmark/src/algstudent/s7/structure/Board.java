@@ -7,11 +7,16 @@ import java.io.IOException;
 public class Board {
 	private String[][] board;
 	public static boolean[][] given;
-	private int lastEl;
+	private static int lastEl;
 
 	public Board() {
 		this.board = read();
+		System.out.println(toString());
 		lastEl = board.length - 3;
+		clearBoard();
+	}
+	public static int getLastEl() {
+		return lastEl;
 	}
 	
 	public String [][] getBoard(){
@@ -36,7 +41,7 @@ public class Board {
 	private static String[][] read() {
 		String[][] board = null;
 		try {
-			String fileName = "src/algstudent/s6/test02.txt";
+			String fileName = "src/algstudent/s7/test/test01.txt";
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
 			String line;

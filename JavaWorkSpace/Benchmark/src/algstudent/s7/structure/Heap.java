@@ -3,15 +3,9 @@ package algstudent.s7.structure;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Heap{
+public class Heap {
 
 	private ArrayList<Node> heap = new ArrayList<Node>();
-	
-	
-	public void insert(Node rootNode) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public boolean empty() {
 		return heap.isEmpty();
@@ -49,11 +43,50 @@ public class Heap{
 		if (heap.isEmpty()) {
 			throw new IllegalStateException();
 		}
-		return heap.get(0);
+		Node root = heap.get(0);
+
+		Collections.swap(heap, 0, heap.size() - 1);
+		heap.remove(heap.size() - 1);
+		filterDown(0);
+		return root;
+	}
+	private void filterDown(int index) {
+
+		if (isLeaf(index)) {
+			return;
+		}
+		int smalest = smalest(index);
+		if (heap.get(index).getHeuristicValue() > (heap.get(smalest).getHeuristicValue())) {
+			Collections.swap(heap, index, smalest);
+			filterDown(smalest);
+		} else {
+			return;
+		}
+	}
+	
+	private int smalest(int index) {
+
+		int left = index * 2 + 1;
+		int right = index * 2 + 2;
+
+		if (right >= heap.size()) {
+			return left;
+		}
+
+		if (heap.get(left).getHeuristicValue() < (heap.get(right).getHeuristicValue()) ) {
+			return left;
+		} else {
+			return right;
+		}
+	}
+	
+	private boolean isLeaf(int index) {
+		int left = index * 2 + 1;
+		return left >= heap.size();
 	}
 
 	public int estimateBest() {
-		return extractBestNode().getHeuristicValue();
+		return heap.get(0).getHeuristicValue();
 	}
 
 }

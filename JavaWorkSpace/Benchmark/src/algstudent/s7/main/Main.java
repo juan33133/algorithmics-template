@@ -1,19 +1,14 @@
 package algstudent.s7.main;
 
-import algstudent.s7.numericalSquare.NumericalSquare;
+import algstudent.s7.numericalSquare.NumericalSquareBranchAndBound;
 
 public class Main {
 
 	public static void main(String[] arg) {
-		int repetitions = 1;
+		NumericalSquareBranchAndBound n = new NumericalSquareBranchAndBound();
 		
-		NumericalSquare n = new NumericalSquare();
-		n.numericalSquareBranchAndBound();
-		
-		System.out.println(n.toString());
 		double t1 = System.currentTimeMillis();
-		System.out.println(); 
-		
+		n.branchAndBound();
 		double t2 = System.currentTimeMillis(); 
 		System.out.println(t2 - t1);
 	}
