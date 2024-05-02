@@ -12,7 +12,7 @@ for size in graph_sizes:
     prim_instance = Prim(nodes, graph)
 
     start_time = time.time()
-    prim_instance.prim()
+    total_cost = prim_instance.primMST()
     end_time = time.time()
     
 
