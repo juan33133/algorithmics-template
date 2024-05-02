@@ -8,22 +8,23 @@ public class Matches {
 	private char anyChar = '?';
 
 	private boolean[][] build(char[] text, char[] pattern) {
-		int rows = text.length;
-		int cols = pattern.length;
+		int rows = text.length + 1;
+		int cols = pattern.length + 1;
 		boolean[][] board = new boolean[rows + 1][cols + 1];
 
 		board[0][0] = true;
 
-		for (int j = 0; j < cols; j++) {
-			for (int i = 0; i < rows; i++) {
-				if (pattern[j] == sequence && (board[i][j] || board[i][j + 1])) {
-					board[j][j + 1] = true; // the one of the bottom
-					board[i + 1][j + 1] = true;
-				} else if (pattern[j] == anyChar) {
-					board[j][j + 1] = true;
-					board[j + 1][j + 1] = true;
-				} else if ((pattern[j] == text[i]) && board[i][j]) {
-					board[i + 1][j + 1] = true;
+		for (int j = 1; j < cols; j++) {
+			for (int i = 1; i < rows; i++) {
+				// when * & 
+				if (pattern[j - 1] == sequence && (board[i - 1][j - 1] || board[i - 1][j])) {
+					board[i - 1][j] = true;
+					board[i][j] = true;
+				} else if (pattern[j - 1] == anyChar && (board[i - 1][j - 1] ||  board[i - 1][j])) {
+					board[i - 1][j] = true;
+					board[i][j] = true;
+				} else if ((pattern[j - 1] == text[i - 1]) && board[i - 1][j - 1]) {
+					board[i][j] = true;
 				}
 			}
 		}
@@ -55,7 +56,7 @@ public class Matches {
 					if(matches[i][j]) {
 						sb.append("T");
 					}else {
-						sb.append("F");
+						sb.append(" ");// easier to read than using "F"
 					}
 					
 				}
